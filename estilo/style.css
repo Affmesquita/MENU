@@ -18,7 +18,7 @@ a {
     padding: 8px;
 }
 a:hover {
-    color: dimgray;
+    color: darkorange;
 }
 #cabeça {
     display: flex;
@@ -42,11 +42,62 @@ li {
     display: none;
 }
 @media screen and (max-width: 600px) {
-    #botao-mobile {
-        display: block;
-    }
     #navegador-lista {
-        display: none;
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 0px;
+        top: 96px;
+        right: 0px;
+        background-color: rgb(146, 33, 33);
+        transition: .6s;
+        z-index: 1000;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+    #navegador.active #navegador-lista{
+        height: calc(100vh - 90px);
+        visibility: visible;
+        overflow-y: auto;
+    } 
+    #navegador-lista li {
+        padding: 40px;
+        font-size: 2em;
+        border-bottom: 2px solid rgba(218, 165, 32, 0.288);
+    }
+    #botao-mobile {
+        display: flex;
+        padding: .5rem .1rem;
+        font-size: 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        gap: 10px;
+    }
+    #hamburguer {
+        border-top: 2px solid;
+        width: 20px;
+    }
+    #hamburguer::after, #hamburguer::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        transition: .3s;
+        position: relative;
+    }
+    #navegador.active #hamburguer {
+        border-top: transparent;
+
+    }
+    #navegador.active #hamburguer::before {
+        transform: rotate(135deg);
+    }
+    #navegador.active #hamburguer::after {
+        transform: rotate(-135deg);
+        top: -7px;
     }
 }
 
